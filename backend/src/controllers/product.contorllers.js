@@ -30,3 +30,17 @@ export async function addProduct(req,res){
         product
      })
 }
+
+export async function getAllProduct(req,res){
+    try{
+        const allProducts = await productModel.find()
+        res.status(200).json({
+            message:'Products fetched successfully!',
+            allProducts
+        })
+    }catch(err){
+        res.status(400).json({
+            message:err
+        })
+    }
+}
