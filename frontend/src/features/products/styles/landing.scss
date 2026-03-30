@@ -1,0 +1,143 @@
+// Variables
+$primary-purple: #8919FB;
+$deep-black: #050505;
+$text-white: #ffffff;
+$text-gray: #b3b3b3;
+
+// Mixins for Responsiveness
+@mixin mobile { @media (max-width: 30rem) { @content; } }
+@mixin tablet { @media (max-width: 48rem) { @content; } }
+
+.landing-container {
+  min-height: 100vh;
+  background-color: $deep-black;
+  color: $text-white;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+
+  // Background Image/Glow Combo
+  .radial-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(137, 25, 251, 0.15) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  position: relative;
+  z-index: 10;
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05rem;
+
+    .highlight { color: $primary-purple; }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+
+    a {
+      text-decoration: none;
+      color: $text-gray;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      &:hover { color: $primary-purple; }
+    }
+
+    .login-btn {
+      background: transparent;
+      border: 0.1rem solid $primary-purple;
+      color: $text-white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover { background: $primary-purple; box-shadow: 0 0 1rem $primary-purple; }
+    }
+
+    @include mobile { display: none; } // Hamburger menu logic can be added later
+  }
+}
+
+.hero {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+  position: relative;
+  z-index: 5;
+
+  .hero-content {
+    max-width: 50rem;
+
+    .headline {
+      font-size: clamp(2.5rem, 8vw, 4.5rem); // Responsive text size
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to bottom, #fff 60%, $primary-purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-headline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: $text-gray;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+
+      @include mobile { flex-direction: column; width: 100%; }
+
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:active { transform: scale(0.95); }
+      }
+
+      .btn-primary {
+        background: $primary-purple;
+        border: none;
+        color: white;
+        box-shadow: 0 0.5rem 2rem rgba(137, 25, 251, 0.3);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border: 0.1rem solid rgba(255, 255, 255, 0.1);
+        color: white;
+        backdrop-filter: blur(0.5rem);
+      }
+    }
+  }
+}
