@@ -1,0 +1,162 @@
+@import "../../../shared/styles/variable.scss";
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Radial gradient to match your uploaded image
+  background: radial-gradient(circle at center, darken($primary-purple, 15%) 0%, $deep-black 80%);
+  padding: 1.5rem;
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 28rem; // Roughly 448px
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.5);
+
+    h2 {
+      color: $text-white;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    p {
+      color: $text-gray;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  .google-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.8rem;
+    background: transparent;
+    border: 1px solid $text-gray;
+    color: $text-white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: $text-white;
+    }
+
+    img {
+      width: 1.25rem;
+    }
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: $text-gray;
+    font-size: 0.8rem;
+
+    &::before, &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    span {
+      padding: 0 1rem;
+    }
+  }
+
+  .input-group {
+    margin-bottom: 1.25rem;
+
+    label {
+      display: block;
+      color: $text-white;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      color: $text-white;
+      outline: none;
+
+      &:focus {
+        border-color: $primary-purple;
+      }
+    }
+  }
+
+  .helper-text {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+
+      &:hover {
+        text-decoration: underline;
+        
+      }
+    }
+    
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: $primary-purple;
+    color: $text-white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: lighten($primary-purple, 5%);
+    }
+  }
+   .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: $text-gray;
+
+      a {
+        color: $text-white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+}
+
+// Mobile Responsiveness
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.5rem !important;
+  }
+}

@@ -1,0 +1,124 @@
+@import "../../../shared/styles/variable.scss";
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    circle at center,
+    darken($primary-purple, 15%) 0%,
+    $deep-black 80%
+  );
+  padding: 1.5rem;
+  position: relative;
+
+  .auth-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(0.625rem);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 28rem;
+    box-shadow: 0 1.25rem 3.125rem rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
+    .auth-header {
+      text-align: center;
+
+      h2 {
+        color: $text-white;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: $text-gray;
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .auth-form {
+      .input-group {
+        margin-bottom: 1.25rem;
+
+        label {
+          display: block;
+          color: $text-white;
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+        }
+
+        input {
+          width: 100%;
+          padding: 0.8rem;
+          background: rgba(255, 255, 255, 0.05);
+          border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+          border-radius: 0.5rem;
+          color: $text-white;
+          outline: none;
+
+          &:focus {
+            border-color: $primary-purple;
+          }
+        }
+      }
+
+      .auth-btn {
+        width: 100%;
+        padding: 0.9rem;
+        background: $primary-purple;
+        color: $text-white;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: lighten($primary-purple, 5%);
+        }
+      }
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: $text-gray;
+
+      a {
+        color: $text-white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  // Glow effect (optional but matches premium UI)
+  .bg-glow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    background: $primary-purple;
+    filter: blur(6rem);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+
+// 📱 Responsive
+@media (max-width: 30rem) {
+  .auth-container {
+    .auth-card {
+      padding: 1.5rem;
+    }
+  }
+}

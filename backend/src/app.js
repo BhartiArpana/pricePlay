@@ -1,10 +1,13 @@
 import express from 'express'
-import router from './routes/product.routes.js'
+import ProductRouter from './routes/product.router.js'
+import authRouter from './routes/auth.router.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(cors(
     {
         origin:"http://localhost:5173",
@@ -12,8 +15,8 @@ app.use(cors(
     }
 ))
 
-app.use('/api/product',router)
-
+app.use('/api/product',ProductRouter)
+app.use('/auth',authRouter)
 
 
 
