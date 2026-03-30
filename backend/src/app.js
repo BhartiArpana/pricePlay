@@ -1,8 +1,10 @@
 import express from 'express'
 import ProductRouter from './routes/product.router.js'
 import authRouter from './routes/auth.router.js'
+import neogatiationRouter from './routes/neogatiation.router.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+
 
 const app = express()
 
@@ -17,7 +19,7 @@ app.use(cors(
 
 app.use('/api/product',ProductRouter)
 app.use('/auth',authRouter)
-
+app.use('/api',neogatiationRouter)
 
 
 export default app
