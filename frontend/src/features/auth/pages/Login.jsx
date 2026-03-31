@@ -2,15 +2,19 @@ import React from 'react';
 import '../styles/login.scss';
 import {useGoogleLogin} from '@react-oauth/google'
 import {googleAuth} from '../services/auth.api'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hook/useAuth';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Login = () => {
-  const {handleLogin,handleRegister} = useAuth()
+  const {handleLogin,handleRegister,user} = useAuth()
   const [email, setEmail] = useState('')
   const [password,setPassword] = useState('')
   const navigate = useNavigate()
+  console.log('user: ',user);
+  
+   
 
     const googleResponse = async(authResult)=>{
         try{
@@ -40,8 +44,14 @@ const Login = () => {
   const handleSubmit =async (e) => {
     e.preventDefault();
     await handleLogin(email,password)
-    navigate('/chat')
+  
   };
+  useEffect(() => {
+  if (user) {
+    navigate('/products');
+  }
+ 
+}, [user, navigate]);
 
   return (
     <div className="login-container">

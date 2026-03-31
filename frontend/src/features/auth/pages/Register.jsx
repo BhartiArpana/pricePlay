@@ -16,7 +16,7 @@ const Register = () => {
     e.preventDefault();
   
    await handleRegister(name,email,password)
-   navigate('/chat')
+   navigate('/products')
   };
 
   return (

@@ -9,3 +9,8 @@ export async function getProducts(){
     const response = await api.get('/api/product')
     return response.data
 }
+
+export async function negotiationChat(productId,content,costPrice,sellingPrice){
+    const response = await api.post(`/api/neogatiation/${productId}`,{content,costPrice,sellingPrice})
+    return response.data
+}

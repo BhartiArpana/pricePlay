@@ -1,15 +1,24 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import '../styles/landing.scss';
+import { useAuth } from '../../auth/hook/useAuth';
 
 const LandingPage = () => {
+  const {user} = useAuth()
+
   const navigate = useNavigate();
 
   const handleStartGame = () => {
     // Yahan tumhara game initialization logic aayega
     console.log("Game Starting...");
-    navigate('/products'); // Logic ke baad navigate karo
+    if(user){
+      navigate('/products')
+
+    }else{
+      navigate('/login')
+    }
   };
+
 
   return (
     <div className="landing-container">

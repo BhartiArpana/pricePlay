@@ -1,6 +1,7 @@
-import {login,register} from '../services/auth.api'
+import {login,register,getMe} from '../services/auth.api'
 import { AuthContext } from '../auth.context'
 import { useContext } from 'react'
+import { useEffect } from 'react'
 
 export const useAuth = ()=>{
     const context = useContext(AuthContext)
@@ -25,8 +26,11 @@ export const useAuth = ()=>{
         setLoading(true)
         const data = await register(name,email,password)
         // console.log(data);
+        if (data.token) {
+       localStorage.setItem("token", data.token);
+    }
         
-        setUser(data)
+        setUser(data.user ||data)
     }catch(err){
         console.log(err);
         
@@ -35,5 +39,26 @@ export const useAuth = ()=>{
     }
    }
 
-   return {handleLogin,handleRegister}
+   const handleGetMe  = async()=>{
+    try{
+    setLoading(true)
+    const data = await getMe()
+    setUser(data)
+  }catch(err){
+    console.log(err)
+    setUser(null)
+  }finally{
+    setLoading(false)  
+  }
+   }
+
+   useEffect(()=>{
+    const token  = localStorage.getItem("token")
+    if(token){
+        handleGetMe()
+    }
+   },[])
+
+
+   return {loading,user,handleLogin,handleRegister,handleGetMe}
 }

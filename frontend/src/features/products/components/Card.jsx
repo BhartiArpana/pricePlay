@@ -1,7 +1,17 @@
 import React from 'react'
 import '../styles/card.scss'
+import {useAuth} from '../../auth/hook/useAuth'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Card = ({image,title,price}) => {
+
+   const navigate = useNavigate()
+   
+const handleUserLoggin = ()=>{
+   navigate('/chat')
+}
+  
+  
   return (
     <div className="product-card">
       <div className="card-image-container">
@@ -20,6 +30,7 @@ const Card = ({image,title,price}) => {
           className="negotiate-btn" 
         //   onClick={onStart}
           aria-label={`Start negotiating for title`}
+          onClick={handleUserLoggin}
         >
           Start Negotiation
         </button>

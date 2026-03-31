@@ -1,6 +1,7 @@
 import Router from 'express'
 import multer from 'multer'
 import {addProduct,getAllProduct} from '../controllers/product.contorllers.js'
+import {isAuthenticated} from '../middleware/auth.middleware.js'
 
 const router = Router()
 

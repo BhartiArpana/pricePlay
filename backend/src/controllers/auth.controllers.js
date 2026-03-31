@@ -25,6 +25,16 @@ export async function googleLogin(req,res){
     email:user.email,
     name:user.name
    },process.env.JWT_SECRET_KEY)
+
+   const cookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // Localhost par false rahega
+    sameSite: 'lax', 
+    maxAge: 24 * 60 * 60 * 1000 // 1 din ki validity
+};
+
+   res.cookie('token',token,cookieOptions)
+
    res.status(200).json({
     message:"success",
     user,
@@ -100,6 +110,15 @@ export async function register(req,res){
     res.cookie('token',token)
     res.status(201).json({
         message:"register success",
+        user
+    })
+}
+
+export async function getMe(req,res){
+    const user = req.user
+    
+    res.status(200).json({
+        message:'user fectched successfully!',
         user
     })
 }

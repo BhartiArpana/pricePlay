@@ -1,0 +1,90 @@
+@import '../../../shared/styles/variable.scss';
+
+.card {
+  background: #111828;
+  border-radius: 1rem;
+  overflow: hidden;
+  max-width: 20rem;
+  box-shadow: 0 0.625rem 1.5625rem rgba(0,0,0,0.25);
+  transition: 0.3s;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-0.375rem);
+  }
+
+  &__image {
+    height: 12.5rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__title {
+    color: $text-white;
+    font-size: 1.0625rem;
+    margin-bottom: 0.625rem;
+    line-height: 1.4;
+  }
+
+  /* 🔥 Price Highlight */
+  &__priceBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(150, 52, 248, 0.1);
+    border: 0.0625rem solid $primary-purple;
+    border-radius: 0.625rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__priceLabel {
+    color: $text-gray;
+    font-size: 0.8125rem;
+  }
+
+  &__price {
+    color: $primary-purple;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  /* Details */
+  &__details {
+    margin-bottom: 0.75rem;
+
+    p {
+      color: $text-gray;
+      font-size: 0.8125rem;
+      margin: 0.1875rem 0;
+
+      strong {
+        color: $text-white;
+      }
+    }
+  }
+
+  /* Description */
+  &__desc {
+    color: $text-gray;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+}
+
+/* Responsive */
+@media (max-width: 48rem) {
+  .card {
+    max-width: 100%;
+  }
+}

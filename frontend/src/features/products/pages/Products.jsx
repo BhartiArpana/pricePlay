@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import Card from '../components/Card'
 import '../styles/products.scss'
 import { useProduct } from '../hook/useProduct'
+import { useAuth } from '../../auth/hook/useAuth'
 
 const Products = () => {
   const {loading,product,handleGetProducts}  = useProduct()
- 
+  
   
 
  useEffect(()=>{
@@ -27,6 +28,7 @@ const Products = () => {
           image={elem.image}
           title={elem.title}
           price={elem.price}
+
           />
         })}
       </div>
